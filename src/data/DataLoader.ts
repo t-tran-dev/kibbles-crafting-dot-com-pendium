@@ -89,10 +89,11 @@ export async function importItemData() {
             .get<CraftingItem[]>("json/data.json")
             .then((res) => res.data)
             .then((data: CraftingItem[]) => {
+                console.log(data);
                 itemData.itemList = data;
-                itemData.itemList.sort((a: CraftingItem, b: CraftingItem) => {
-                    return a.id - b.id;
-                })
+                for(let i = 0; i < data.length; i++) {
+                    itemData.itemList[i].id = i;
+                }
                 let garbo: CraftingItem[] =[];//= genGarbo();
                 return garbo;
             }).then((garbo) => {
