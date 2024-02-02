@@ -1,6 +1,7 @@
 {
-  "name": "material-ui-cra-ts",
-  "version": "5.0.0",
+  "name": "kibbles-crafting-dot-com-pendium",
+  "version": "1.0.0",
+  "homepage": "https://grimmhumor.github.io/kibbles-crafting-dot-com-pendium",
   "private": true,
   "dependencies": {
     "axios": "latest",
@@ -22,7 +23,12 @@
     "typescript": "latest",
     "usehooks-ts": "latest"
   },
+  "devDependencies": {
+    "gh-pages": "latest"
+  },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
