@@ -4,19 +4,19 @@
   "homepage": "https://grimmhumor.github.io/kibbles-crafting-dot-com-pendium",
   "private": true,
   "dependencies": {
-    "axios": "latest",
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
-    "lodash": "latest",
-    "@types/lodash": "latest",
-    "@mui/material": "latest",
     "@mui/icons-material": "latest",
+    "@mui/material": "latest",
     "@mui/x-charts": "latest",
     "@mui/x-data-grid": "latest",
+    "@types/lodash": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "react-cookie": "latest",
+    "axios": "latest",
+    "lodash": "latest",
     "react": "latest",
+    "react-cookie": "latest",
     "react-dom": "latest",
     "react-scripts": "latest",
     "react-virtuoso": "latest",
@@ -24,7 +24,7 @@
     "usehooks-ts": "latest"
   },
   "devDependencies": {
-    "gh-pages": "latest"
+    "gh-pages": "^6.1.1"
   },
   "scripts": {
     "predeploy": "npm run build",
