@@ -1,8 +1,6 @@
 [
   {
     "name":"Common Curative Reagent",
-    "type":"reagent",
-    "subtype": "curative",
     "rarity": "common",
     "priceCp": 1500,
     "usedFor": "Alchemy, Poisoncraft",
@@ -10,8 +8,6 @@
   },
   {
     "name":"Glass Vial",
-    "type":"material",
-    "subtype": null,
     "rarity": "common",
     "priceCp": 100,
     "usedFor": "Alchemy, Poisoncraft",
@@ -32,8 +28,6 @@
   },
   {
     "name":"Potion of Healing",
-    "type":"potion",
-    "subtype": null,
     "rarity": "common",
     "priceCp": 5000,
     "usedFor": "",
@@ -58,8 +52,6 @@
   },
   {
     "name":"Unformed Glass",
-    "type":"misc",
-    "subtype": null,
     "rarity": "common",
     "priceCp": 10,
     "usedFor": "Glassblowing",
@@ -67,8 +59,6 @@
   },
   {
     "name":"Common Arcane Essence",
-    "type":"essence",
-    "subtype": null,
     "rarity": "common",
     "priceCp": 4500,
     "usedFor": "Alchemy, Enchanting, Scrollscribing, Wand Whittling",
@@ -97,8 +87,6 @@
   },
   {
     "name":"Common Primal Essence",
-    "type":"essence",
-    "subtype": null,
     "rarity": "common",
     "priceCp": 4500,
     "usedFor": "Alchemy, Enchanting, Scrollscribing, Wand Whittling",
@@ -119,8 +107,6 @@
   },
   {
     "name":"Common Divine Essence",
-    "type":"essence",
-    "subtype": null,
     "rarity": "common",
     "priceCp": 4500,
     "usedFor": "Alchemy, Enchanting, Scrollscribing, Wand Whittling",
@@ -145,8 +131,6 @@
   },
   {
     "name":"Common Reactive Reagent",
-    "type":"reagent",
-    "subtype": "reactive",
     "rarity": "common",
     "priceCp": 1500,
     "usedFor": "Alchemy, Poisoncraft",
@@ -154,8 +138,6 @@
   },
   {
     "name":"Common Poisonous Reagent",
-    "type":"reagent",
-    "subtype": "reactive",
     "rarity": "common",
     "priceCp": 1500,
     "usedFor": "Alchemy, Poisoncraft",

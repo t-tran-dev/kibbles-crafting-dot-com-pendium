@@ -11,8 +11,6 @@ export interface RecipeItem {
 export interface CraftingItem {
     id: number;
     name: string;
-    type: string;
-    subtype: string;
     rarity: string;
     priceCp: number;
     usedFor: string;

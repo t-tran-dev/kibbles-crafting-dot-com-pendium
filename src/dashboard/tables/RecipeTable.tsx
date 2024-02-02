@@ -33,8 +33,6 @@ let inventoryData: Map<string, InventoryItem> = new Map<string, InventoryItem>([
 interface ItemData {
     id: number;
     name: string;
-    type: string;
-    subtype: string;
     rarity: string;
     priceCp: number;
     usedFor: string;
@@ -48,8 +46,6 @@ function formatUsedList(usedFor: string[]) {
 function createItemData(
     id: number,
     name: string,
-    type: string,
-    subtype: string,
     rarity: string,
     priceCp: number,
     usedFor: string,
@@ -58,8 +54,6 @@ function createItemData(
     return {
         id,
         name,
-        type,
-        subtype,
         rarity,
         priceCp,
         usedFor,
@@ -69,7 +63,7 @@ function createItemData(
 
 function setRows(itemData: CraftingItem[]): ItemData[] {
     return itemData.map(item => {
-        return createItemData(item.id, item.name, item.type, item.subtype, item.rarity, item.priceCp, item.usedFor, item.school)
+        return createItemData(item.id, item.name, item.rarity, item.priceCp, item.usedFor, item.school)
     })
 }
 

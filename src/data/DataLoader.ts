@@ -43,8 +43,6 @@ function createCraftingItem(
     return {
         id,
         name,
-        type: "",
-        subtype: "",
         rarity,
         priceCp,
         usedFor,
