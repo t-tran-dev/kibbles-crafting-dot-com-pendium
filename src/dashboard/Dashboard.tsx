@@ -385,6 +385,7 @@ export default function Dashboard({inventory, inventoryData, craftable, projects
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+              <Typography variant="subtitle1">Reload page to fix any bugs.</Typography>
             <Grid container spacing={3}>
                 {/* Active Projects */}
                 <Grid item xs={12}>

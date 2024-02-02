@@ -35,8 +35,6 @@ export default function App() {
             recipe.materials.forEach(material => {
               const inv = inventoryData.get(material.name.toLowerCase())
               const invQuantity = inv ? inv.quantity : 0;
-              console.log(material);
-              console.log(inv);
               if (invQuantity < material.quantity) {
                 canCraft = false;
               }

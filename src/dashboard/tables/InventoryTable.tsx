@@ -30,11 +30,6 @@ interface ItemData {
     priceCp: number;
     quantity: number;
 }
-function formatUsedList(usedFor: string[]) {
-    if (!usedFor)
-        return "";
-    return usedFor.reduce((prev, curr) => prev + ", " + curr);
-}
 
 function createData(item: InventoryItem): ItemData {
     const id = item.id;
@@ -44,7 +39,7 @@ function createData(item: InventoryItem): ItemData {
     const recipeItem = itemData.itemList[id]
 
     const rarity = recipeItem.rarity
-    const usedFor = formatUsedList(recipeItem.usedFor);
+    const usedFor = recipeItem.usedFor;
     const priceCp = recipeItem.priceCp;
 
 

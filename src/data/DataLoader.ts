@@ -37,7 +37,7 @@ function createCraftingItem(
     name: string,
     rarity: string,
     priceCp: number,
-    usedFor: string[],
+    usedFor: string,
     recipes: RecipeItem[]
 ): CraftingItem {
     return {
@@ -78,18 +78,16 @@ function genGarbo() {
         let material = Math.floor(Math.random() * 4000);
 
         let rec: RecipeItem = {id: 0,school: usedForOptions[scho], dc: 10, checks: 2, materials: [{id: -1, name: material.toString(), quantity: rar+1}]}
-        garbo.push(createCraftingItem(i, i.toString(), rarityOptions[rar], price, [usedForOptions[use]], [rec]))
+        garbo.push(createCraftingItem(i, i.toString(), rarityOptions[rar], price, usedForOptions[use], [rec]))
     }
     return garbo;
 }
 export async function importItemData() {
-    console.log("runs");
     try {
         await axios
             .get<CraftingItem[]>("json/data.json")
             .then((res) => res.data)
             .then((data: CraftingItem[]) => {
-                console.log(data);
                 itemData.itemList = data;
                 for(let i = 0; i < data.length; i++) {
                     itemData.itemList[i].id = i;

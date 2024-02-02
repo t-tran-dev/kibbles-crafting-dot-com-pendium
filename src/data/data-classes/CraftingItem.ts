@@ -15,7 +15,7 @@ export interface CraftingItem {
     subtype: string;
     rarity: string;
     priceCp: number;
-    usedFor: string[];
+    usedFor: string;
     recipes: RecipeItem[];
     school: string;
 }

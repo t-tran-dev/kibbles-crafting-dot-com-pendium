@@ -52,11 +52,9 @@ function createItemData(
     subtype: string,
     rarity: string,
     priceCp: number,
-    usedForList: string[],
+    usedFor: string,
     school: string
 ): ItemData {
-    let usedFor = formatUsedList(usedForList);
-
     return {
         id,
         name,
@@ -427,7 +425,7 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
                     label="Only show craftable"
                 />
                 <Typography style={{color: 'green', fontWeight: 'bold'}}>
-                    * Green denotes craftable items
+                    * Green shows items you have the ingredients to craft. Toggle shows just these.
                 </Typography>
             </div>
         </Box>
