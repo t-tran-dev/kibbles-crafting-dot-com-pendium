@@ -51,7 +51,7 @@ function Readme({viewState}: {viewState: any}) {
             >
             <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
             <Typography variant="h3">
-                Instructions
+                User Guide
             </Typography>
             </Link>
 

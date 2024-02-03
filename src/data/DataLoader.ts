@@ -97,6 +97,10 @@ export async function importItemData() {
 
                 //Populate recipe data
                 itemData.itemList.forEach( (item, itemIndex) => {
+                    // took a ride with the devil
+                    // he took me down to his level
+                    item.name = item.name.charAt(0).toUpperCase() + item.name.slice(1);
+
                     let school = ""
                     if (!!item.recipes) {
                         item.recipes.forEach((recipe, recipeIndex) => {
