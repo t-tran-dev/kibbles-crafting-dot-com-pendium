@@ -29,10 +29,13 @@ function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://www.kthomebrew.com/">
-        Kibbles Tasty
-      </Link>{' '}
-      {new Date().getFullYear()}
+        <Link color="inherit" href="https://www.kthomebrew.com/">
+            Kibbles Tasty
+        </Link>{' '}
+        <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
+            {new Date().getFullYear()}
+        </Link>{' '}
+
       {'.'}
     </Typography>
   );
@@ -46,10 +49,11 @@ function Readme({viewState}: {viewState: any}) {
             direction="column"
             alignItems="center"
             >
-
+            <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
             <Typography variant="h3">
                 Instructions
             </Typography>
+            </Link>
 
             <Typography variant="subtitle1">
                 This is a standlone tool to facilite the crafting experience to be used in alongside your D&D game. Uses the crafting system from Kibbles Crafting Compendium, leveraging the items and recipes described within. Inventory, Wishlist and Active Projects are stored as browser cookies.
@@ -65,9 +69,11 @@ function Readme({viewState}: {viewState: any}) {
                         <List dense={true}>
                             <ListItem>
                                 <ListItemText>
+                                    <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
                                     <Typography variant="h6">
                                         Items & Recipes
                                     </Typography>
+                                    </Link>
                                 </ListItemText>
                             </ListItem>
                             <ListItem>
@@ -111,11 +117,14 @@ function Readme({viewState}: {viewState: any}) {
                 <Grid item xs={6}>
                     <Paper>
                         <List dense={true}>
+
                         <ListItem>
                             <ListItemText>
+                                <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
                             <Typography variant="h6">
                                 Inventory
                             </Typography>
+                                </Link>
                             </ListItemText>
                         </ListItem>
                         <ListItem>
@@ -155,9 +164,11 @@ function Readme({viewState}: {viewState: any}) {
                         <List dense={true}>
                             <ListItem>
                                 <ListItemText>
+                                    <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
                                     <Typography variant="h6">
                                         Active Projects
                                     </Typography>
+                                    </Link>
                                 </ListItemText>
                             </ListItem>
                             <ListItem>
@@ -211,9 +222,11 @@ function Readme({viewState}: {viewState: any}) {
                         <List dense={true}>
                             <ListItem>
                                 <ListItemText>
+                                    <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
                                     <Typography variant="h6">
                                         Wishlist
                                     </Typography>
+                                    </Link>
                                 </ListItemText>
                             </ListItem>
                             <ListItem>
@@ -385,7 +398,7 @@ export default function Dashboard({inventory, inventoryData, craftable, projects
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              <Typography variant="subtitle1">Reload page to fix any bugs.</Typography>
+              <Typography variant="subtitle1">Reload page to fix any bugs. Seriously, reload all the time. If anything looks off or confuses you.</Typography>
             <Grid container spacing={3}>
                 {/* Active Projects */}
                 <Grid item xs={12}>
