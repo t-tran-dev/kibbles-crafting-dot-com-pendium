@@ -11,16 +11,22 @@ import RecipeItemRow from "./RecipeItemRow";
 import Box from "@mui/material/Box";
 import {RecipeItem} from "../../data/data-classes/CraftingItem";
 import {itemData} from "../../data/DataLoader";
+import RecipeModal from "../Modals/RecipeModal";
 
 function formatPrice(priceCp: number): String {
+        if (priceCp == 0) {
+            return ""
+        }
 
         if(priceCp < 10) {
                 return  priceCp.toString() + " cp";
-        } else if(priceCp < 100) {
-                return (priceCp/10).toString() + " sp";
-        } else {
-                return (priceCp/100).toString() + " gp";
         }
+        if(priceCp < 100) {
+                return (priceCp/10).toString() + " sp";
+        }
+
+        return (priceCp/100).toString() + " gp";
+
 }
 export default function CraftingItemRow({row, index, inventory, inventoryData, craftable, projects, viewState, forceUpdate} : {row: any, index: any, inventory: any, inventoryData: any, craftable: any, projects: any, viewState: any, forceUpdate: any}) {
     const [open, setOpen] = React.useState(false);
@@ -65,14 +71,8 @@ export default function CraftingItemRow({row, index, inventory, inventoryData, c
             <React.Fragment>
                         <TableRow sx={{ '& > *': { borderBottom: 'unset' }}}>
                                 <TableCell>
-                                        <IconButton
-                                        style={recipes.length == 0 ? { display: 'none' } : {}}
-                                        aria-label="expand row"
-                                        size="small"
-                                        onClick={() => setOpen(!open)}
-                                        >
-                                            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                                        </IconButton>
+                                    <RecipeModal recipes={recipes} parentId={row.id} inventory={inventory} inventoryData={inventoryData} craftable={craftable} projects={projects} viewState={viewState} forceUpdate={forceUpdate} index={index}
+                                                 />
                                 </TableCell>
                                 <TableCell
                                 component="th"
@@ -101,18 +101,7 @@ export default function CraftingItemRow({row, index, inventory, inventoryData, c
                                     </Button>
                                 </TableCell>
                                 </TableRow>
-                                <TableRow>
-                                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-                                <Collapse in={open} timeout="auto" unmountOnExit>
-                                        <Box sx={{ margin: 1 }}>
-                                            {recipes.map((recipe: RecipeItem, i: number) => {
-                                                const id = row.id
-                                                return(<RecipeItemRow key={"recipe-"+index+"-"+i}  recipe={{recipe}} parentId={id} inventory = {inventory} inventoryData={inventoryData} craftable={craftable} projects={projects} viewState={viewState} forceUpdate={forceUpdate}/>);
-                                            } )}
-                                        </Box>
-                                </Collapse>
-                        </TableCell>
-                    </TableRow>
+
                 </React.Fragment>
     )
 }

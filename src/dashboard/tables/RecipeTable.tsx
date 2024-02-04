@@ -37,6 +37,7 @@ interface ItemData {
     priceCp: number;
     usedFor: string;
     school: string;
+    type: string;
 }
 function formatUsedList(usedFor: string[]) {
     if (!usedFor)
@@ -49,7 +50,8 @@ function createItemData(
     rarity: string,
     priceCp: number,
     usedFor: string,
-    school: string
+    school: string,
+    type: string
 ): ItemData {
     return {
         id,
@@ -57,13 +59,14 @@ function createItemData(
         rarity,
         priceCp,
         usedFor,
-        school
+        school,
+        type
     };
 }
 
 function setRows(itemData: CraftingItem[]): ItemData[] {
     return itemData.map(item => {
-        return createItemData(item.id, item.name, item.rarity, item.priceCp, item.usedFor, item.school)
+        return createItemData(item.id, item.name, item.rarity, item.priceCp, item.usedFor, item.school, item.type)
     })
 }
 
@@ -78,8 +81,8 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
         }
         return 0;
     } else {
-        const ar: string = a[orderBy] as string;
-        const br: string = b[orderBy] as string;
+        const ar: string = (a[orderBy] as string).toLowerCase();
+        const br: string = (b[orderBy] as string).toLowerCase();
 
         const ai = itemData.rarity.indexOf(ar)
         const bi = itemData.rarity.indexOf(br)
@@ -283,6 +286,9 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
     const sortedRows = React.useMemo(() => {
         const filteredRows = handleFilterList();
 
+        console.log(scrollPosition)
+        console.log(Math.ceil((scrollPosition + containerHeight) / rowHeight - 1) +
+            bufferedItems)
         const startIndex = Math.max(
             Math.floor(scrollPosition / rowHeight) - bufferedItems,
             0
