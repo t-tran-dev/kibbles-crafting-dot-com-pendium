@@ -15,6 +15,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import ChecklistIcon from "@mui/icons-material/Checklist";
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -53,11 +54,9 @@ export default function UserGuide() {
                         direction="column"
                         alignItems="center"
                     >
-                        <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
                             <Typography variant="h3">
                                 User Guide
                             </Typography>
-                        </Link>
 
                         <Typography variant="subtitle1">
                             This is a standlone tool to facilite the crafting experience to be used in alongside your D&D game. Uses the crafting system from Kibbles Crafting Compendium, leveraging the items and recipes described within. Inventory, Wishlist and Active Projects are stored as browser cookies.
@@ -69,15 +68,13 @@ export default function UserGuide() {
                             spacing={3}
                         >
                             <Grid item xs={6}>
-                                <Paper>
+                                <Paper elevation={12}>
                                     <List dense={true}>
                                         <ListItem>
                                             <ListItemText>
-                                                <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
                                                     <Typography variant="h6">
                                                         Items & Recipes
                                                     </Typography>
-                                                </Link>
                                             </ListItemText>
                                         </ListItem>
                                         <ListItem>
@@ -97,7 +94,7 @@ export default function UserGuide() {
                                         <ListItem>
                                             <ListItemText>
                                                 <Typography variant="subtitle1">
-                                                    Expanding a recipe dropdown with <IconButton><KeyboardArrowDownIcon /></IconButton> will show you what is required to craft it and what you are missing.
+                                                    View an item's recipes by clicking <IconButton><ChecklistIcon /></IconButton> will show you what is required to craft it and what you are missing. Items without this icon cannot be crafted and are base materials.
                                                 </Typography>
                                             </ListItemText>
                                         </ListItem>
@@ -119,60 +116,13 @@ export default function UserGuide() {
                                 </Paper>
                             </Grid>
                             <Grid item xs={6}>
-                                <Paper>
-                                    <List dense={true}>
-
-                                        <ListItem>
-                                            <ListItemText>
-                                                <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
-                                                    <Typography variant="h6">
-                                                        Inventory
-                                                    </Typography>
-                                                </Link>
-                                            </ListItemText>
-                                        </ListItem>
-                                        <ListItem>
-                                            <ListItemText>
-                                                <Typography variant="subtitle1">
-                                                    The items stored in your inventory used to calculate what you are able to craft.
-                                                </Typography>
-                                            </ListItemText>
-                                        </ListItem>
-                                        <ListItem>
-                                            <ListItemText>
-                                                <Typography variant="subtitle1">
-                                                    Items added from Items & Recipes as well as completed projects from Active Projects are stored here.
-                                                </Typography>
-                                            </ListItemText>
-                                        </ListItem>
-                                        <ListItem>
-                                            <ListItemText>
-                                                <Typography variant="subtitle1">
-                                                    You can increase or decrease the quantity of an item in your inventory with <Button><RemoveIcon/></Button>
-                                                    <Button><AddIcon/></Button> Adding an item from Items & Recipes will increase the quantity if it is already in your inventory.
-                                                </Typography>
-                                            </ListItemText>
-                                        </ListItem>
-                                        <ListItem>
-                                            <ListItemText>
-                                                <Typography variant="subtitle1">
-                                                    Items are automatically removed when you click <Button>Start Project</Button> on a recipe, and completing an Active Project will add the new item to your Inventory directly.
-                                                </Typography>
-                                            </ListItemText>
-                                        </ListItem>
-                                    </List>
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <Paper>
+                                <Paper elevation={12}>
                                     <List dense={true}>
                                         <ListItem>
                                             <ListItemText>
-                                                <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
                                                     <Typography variant="h6">
                                                         Active Projects
                                                     </Typography>
-                                                </Link>
                                             </ListItemText>
                                         </ListItem>
                                         <ListItem>
@@ -222,15 +172,56 @@ export default function UserGuide() {
                                 </Paper>
                             </Grid>
                             <Grid item xs={6}>
-                                <Paper>
+                                <Paper elevation={12}>
+                                    <List dense={true}>
+
+                                        <ListItem>
+                                            <ListItemText>
+                                                <Typography variant="h6">
+                                                    Inventory
+                                                </Typography>
+                                            </ListItemText>
+                                        </ListItem>
+                                        <ListItem>
+                                            <ListItemText>
+                                                <Typography variant="subtitle1">
+                                                    The items stored in your inventory used to calculate what you are able to craft.
+                                                </Typography>
+                                            </ListItemText>
+                                        </ListItem>
+                                        <ListItem>
+                                            <ListItemText>
+                                                <Typography variant="subtitle1">
+                                                    Items added from Items & Recipes as well as completed projects from Active Projects are stored here.
+                                                </Typography>
+                                            </ListItemText>
+                                        </ListItem>
+                                        <ListItem>
+                                            <ListItemText>
+                                                <Typography variant="subtitle1">
+                                                    You can increase or decrease the quantity of an item in your inventory with <Button><RemoveIcon/></Button>
+                                                    <Button><AddIcon/></Button> Adding an item from Items & Recipes will increase the quantity if it is already in your inventory.
+                                                </Typography>
+                                            </ListItemText>
+                                        </ListItem>
+                                        <ListItem>
+                                            <ListItemText>
+                                                <Typography variant="subtitle1">
+                                                    Items are automatically removed when you click <Button>Start Project</Button> on a recipe, and completing an Active Project will add the new item to your Inventory directly.
+                                                </Typography>
+                                            </ListItemText>
+                                        </ListItem>
+                                    </List>
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Paper elevation={12}>
                                     <List dense={true}>
                                         <ListItem>
                                             <ListItemText>
-                                                <Link color="inherit" href="https://youtu.be/mWsoQLYZ1X8?si=-6BTuy48bID6fYIq&t=104">
                                                     <Typography variant="h6">
                                                         Wishlist
                                                     </Typography>
-                                                </Link>
                                             </ListItemText>
                                         </ListItem>
                                         <ListItem>

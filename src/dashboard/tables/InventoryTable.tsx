@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {DataGrid, GridColDef, GridRowsProp, GridValueGetterParams} from '@mui/x-data-grid';
 import {CraftingItem} from "../../data/data-classes/CraftingItem";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {itemData} from "../../data/DataLoader";
 import {throttle} from "lodash";
 import Box from "@mui/material/Box";
@@ -210,10 +210,10 @@ function EnhancedTableHead(props: EnhancedTableProps) {
 
 export default function EnhancedTable({inventory, forceUpdate, inventoryData} : {inventory: any, forceUpdate: any, inventoryData: any}) {
 
+    const container = useRef(null)
+
     // Virtualization variables
     const rowHeight = 50;
-    const bufferedItems = 15;
-    const containerHeight = 440;
 
     const [scrollPosition, setScrollPosition] = React.useState(0);
     const [originalRows, setOriginalRows] = React.useState(setRows(inventoryData));
@@ -223,6 +223,14 @@ export default function EnhancedTable({inventory, forceUpdate, inventoryData} : 
     const [rarity, setRarity] = useState("all")
     const [usedFor, setUsedFor] = useState("all")
     const [totalHeight, setTotalHeight] = useState(0)
+    const [bufferedItems, setBufferedItems] = useState(15)
+    const [containerHeight, setHeight] = useState(440);
+
+    useEffect(() => {
+        const height = container? container.current? container.current['offsetHeight']: 0: 0;
+        setHeight(height)
+        setBufferedItems(Math.max(15, Math.ceil(height/rowHeight + 15)));
+    });
 
     const handleRequestSort = (
         event: React.MouseEvent<unknown>,
@@ -330,7 +338,8 @@ export default function EnhancedTable({inventory, forceUpdate, inventoryData} : 
                 ))}
             </TextField>
             <Paper sx={{ width: '100%', mb: 2 , overflow: 'hidden'}}>
-                <TableContainer sx={{ maxHeight: 440 }}
+                <TableContainer sx={{height: '50vh'}}
+                                ref={container}
                                 onScroll={onScroll}
                                 style={{
                                     overflowY: "scroll",

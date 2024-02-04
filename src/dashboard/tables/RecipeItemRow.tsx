@@ -13,6 +13,8 @@ import {itemData} from "../../data/DataLoader";
 
 
 export default function RecipeItemRow({recipe, parentId, inventory, inventoryData, craftable, projects, viewState, forceUpdate} : {recipe: any, parentId:any, inventory: any, inventoryData: any, craftable: any, projects : any, viewState: any, forceUpdate: any}) {
+    const [dropdown, setDropdown] = React.useState(-1);
+
     let recipeItem = recipe.recipe;
     let recipes = craftable.get(parentId);
     let canCraft = false;
@@ -26,6 +28,7 @@ export default function RecipeItemRow({recipe, parentId, inventory, inventoryDat
 
     let isProjects = viewState == "projects";
     let isWishlist = viewState == "wishlist";
+
 
     function startProject(event: any) {
         let value: string = event.target.value;

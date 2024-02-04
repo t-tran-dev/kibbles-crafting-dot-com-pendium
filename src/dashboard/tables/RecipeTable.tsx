@@ -15,20 +15,11 @@ import { visuallyHidden } from '@mui/utils';
 import {CraftingItem, RecipeItem} from "../../data/data-classes/CraftingItem";
 import {MenuItem, TextField} from "@mui/material";
 import {InventoryItem} from "../../data/data-classes/InventoryItem";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import CraftingItemRow from "./CraftingItemRow";
 import {itemData} from "../../data/DataLoader";
 import { useElementSize } from 'usehooks-ts';
 import {throttle} from "lodash";
-
-//TODO: Placeholder before we cookie it up
-let inventoryData: Map<string, InventoryItem> = new Map<string, InventoryItem>([["Glass Vial".toLowerCase(), {
-        id: 2,
-        name: "Glass Vial",
-        quantity: 1
-    }],
-    ["Common Curative Reagent".toLowerCase(), {id: 1, name: "Common Curative Reagent", quantity: 2}],
-    ["Unformed Glass".toLowerCase(), {id: 4, name: "Unformed Glass", quantity: 2}]]);
 
 interface ItemData {
     id: number;
@@ -38,11 +29,6 @@ interface ItemData {
     usedFor: string;
     school: string;
     type: string;
-}
-function formatUsedList(usedFor: string[]) {
-    if (!usedFor)
-        return "";
-    return usedFor.reduce((prev, curr) => prev + ", " + curr);
 }
 function createItemData(
     id: number,
@@ -224,14 +210,16 @@ function EnhancedTableHead(props: EnhancedTableProps) {
 
 export default function EnhancedTable({inventory, inventoryData, craftable, projects, viewState, wishlistData, projectData, forceUpdate} : {inventory: any, inventoryData: any, craftable: any, projects: any, viewState: any, wishlistData: any, projectData: any, forceUpdate: any}) {
 
+    const container = useRef(null)
+
+
     // Virtualization variables
     const rowHeight = 50;
-    const bufferedItems = 15;
-    const containerHeight = 440;
+
     let initialRows: CraftingItem[] = [];
 
 
-
+    const [containerHeight, setHeight] = useState(440);
     const [scrollPosition, setScrollPosition] = React.useState(0);
     const [originalRows, setOriginalRows] = React.useState(setRows(initialRows));
     const [order, setOrder] = React.useState<Order>('asc');
@@ -242,6 +230,15 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
     const [school, setSchool] = useState("all")
     const [usedFor, setUsedFor] = useState("all")
     const [totalHeight, setTotalHeight] = useState(0)
+    const [bufferedItems, setBufferedItems] = useState(15)
+
+
+    useEffect(() => {
+        const height = container? container.current? container.current['offsetHeight']: 0: 0;
+        setHeight(height)
+        setBufferedItems(Math.max(15, Math.ceil(height/rowHeight + 15)));
+    });
+
 
     if (viewState == "wishlist" && originalRows.length != wishlistData.length) {
         setOriginalRows(setRows(wishlistData));
@@ -338,7 +335,7 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
 
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%'}}>
             <TextField id="outlined-search" label="Search" type="search" sx={{ width: '40%' }}
                        onChange={handleSearch}
             />
@@ -385,8 +382,10 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
                 ))}
             </TextField>
             <Paper sx={{ width: '100%', mb: 2 , overflow: 'hidden'}}>
-                <TableContainer sx={{ maxHeight: 440 }}
-                                onScroll={onScroll}
+                <TableContainer
+                    sx={{height: '50vh'}}
+                    ref={container}
+                    onScroll={onScroll}
                                 style={{
                                     overflowY: "scroll",
                                     position: "relative"
