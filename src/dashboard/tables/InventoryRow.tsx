@@ -51,7 +51,7 @@ export default function InventoryRow({row, inventory, inventoryData}: {row: any,
     return (
         <React.Fragment>
 
-            <TableRow sx={{ '& > *': { borderBottom: 'unset' }}}>
+            <TableRow sx={{ '& > *': { borderBottom: 'unset' }}} hover={true}>
                 <TableCell
                     component="th"
                     id={row.id}

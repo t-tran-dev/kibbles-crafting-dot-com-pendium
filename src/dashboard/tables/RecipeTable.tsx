@@ -284,9 +284,6 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
     const sortedRows = React.useMemo(() => {
         const filteredRows = handleFilterList();
 
-        console.log(scrollPosition)
-        console.log(Math.ceil((scrollPosition + containerHeight) / rowHeight - 1) +
-            bufferedItems)
         const startIndex = Math.max(
             Math.floor(scrollPosition / rowHeight) - bufferedItems,
             0
@@ -411,7 +408,7 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
                         />
                         <TableBody
                         >
-                            <TableRow sx={{height: totalHeight}} />
+                            <TableRow sx={{height: totalHeight}} hover={true}/>
                             {sortedRows.map((row, index) => {
                                 const id = row.name.replace(" ", "-") + index;
                                 return(

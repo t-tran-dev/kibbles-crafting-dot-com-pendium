@@ -19,6 +19,7 @@
     "react-cookie": "latest",
     "react-dom": "latest",
     "react-scripts": "latest",
+    "react-toastify": "^10.0.4",
     "react-virtuoso": "latest",
     "typescript": "latest",
     "usehooks-ts": "latest"

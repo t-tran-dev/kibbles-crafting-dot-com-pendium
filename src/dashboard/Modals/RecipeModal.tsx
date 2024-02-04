@@ -10,6 +10,7 @@ import {RecipeItem} from "../../data/data-classes/CraftingItem";
 import RecipeItemRow from "../tables/RecipeItemRow";
 import TableRow from "@mui/material/TableRow";
 import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -46,6 +47,7 @@ export default function RecipeModal({recipes, parentId, inventory, inventoryData
                         <Button onClick={handleClose}><CloseIcon/></Button>
                     </div>
                     <Table>
+                        <TableBody>
                         <TableRow>
                             <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
                                 <Collapse in={open} timeout="auto" unmountOnExit>
@@ -58,6 +60,7 @@ export default function RecipeModal({recipes, parentId, inventory, inventoryData
                                 </Collapse>
                             </TableCell>
                         </TableRow>
+                        </TableBody>
                     </Table>
                 </Box>
             </Modal>

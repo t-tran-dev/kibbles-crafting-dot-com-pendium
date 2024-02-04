@@ -51,6 +51,7 @@ export default function CraftingItemRow({row, index, inventory, inventoryData, c
     }
 
     function removeWishlist(event: any) {
+
         let value: number = event.target.value;
         if (value) {
 
@@ -69,7 +70,7 @@ export default function CraftingItemRow({row, index, inventory, inventoryData, c
     let isWishlist = viewState == "wishlist";
     return(
             <React.Fragment>
-                        <TableRow sx={{ '& > *': { borderBottom: 'unset' }}}>
+                        <TableRow sx={{ '& > *': { borderBottom: 'unset' }}} hover={true}>
                                 <TableCell>
                                     <RecipeModal recipes={recipes} parentId={row.id} inventory={inventory} inventoryData={inventoryData} craftable={craftable} projects={projects} viewState={viewState} forceUpdate={forceUpdate} index={index}
                                                  />

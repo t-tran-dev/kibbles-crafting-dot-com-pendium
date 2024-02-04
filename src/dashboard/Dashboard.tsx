@@ -18,7 +18,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { ViewList } from './ViewList';
 import InventoryTable from './tables/InventoryTable';
 import RecipesTable from "./tables/RecipeTable";
-import {Button, ListItem} from "@mui/material";
+import {Alert, Button, ListItem, Snackbar} from "@mui/material";
 import ListItemText from "@mui/material/ListItemText";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -198,9 +198,9 @@ export default function Dashboard({inventory, inventoryData, craftable, projects
                     </Paper>
                 </Grid>
             </Grid>
-              <Readme viewState={viewState}/>
-            <Copyright sx={{ pt: 4 }} />
           </Container>
+            <Readme viewState={viewState}/>
+            <Copyright sx={{ pt: 4 }} />
         </Box>
       </Box>
   );

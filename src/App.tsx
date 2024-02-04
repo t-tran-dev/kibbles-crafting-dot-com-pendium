@@ -6,8 +6,8 @@ import {importItemData, itemData} from "./data/DataLoader";
 import {CraftingItem, RecipeItem} from "./data/data-classes/CraftingItem";
 import {CookiesProvider, useCookies} from "react-cookie";
 import {cookifyInventory, cookifyProjWishlist, parseInventory, parseProjWishList} from "./data/Cookies";
-
-
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 // This is a janky spagetti project that only works when a single developer knows how to chrochet spagetti, never used React before either sooooo..... glhf
@@ -24,6 +24,9 @@ export default function App() {
   const forceUpdate = React.useCallback(() => updateState(val+1), [inventoryData]);
 
 
+  function toastAlert(message: string) {
+    toast(message)
+  }
   function initializeCraftableValues(): Map<number, RecipeItem[]> {
     let crafting = new Map<number, RecipeItem[]>(craftable);
     itemData.itemList.forEach((item) => {
@@ -101,8 +104,12 @@ export default function App() {
       setCookie("inv", cookifyInventory(newInventory), {path: "/"});
       setInventoryData(newInventory)
 
-      if (removeProject)
+      if (removeProject) {
         removeFromProjects(itemData.itemList[items[0].id])
+        toastAlert("Project completed and added to inventory.")
+      } else {
+        toastAlert("Added to inventory")
+      }
     }
     forceUpdate();
   }
@@ -135,6 +142,7 @@ export default function App() {
     setCookie("wish", cookifyProjWishlist(wishlist), {path: "/"});
     setWishlistData(wishlist);
     forceUpdate();
+    toastAlert("Added to wishlist")
   }
 
   function removeFromWishlist(item: CraftingItem) {
@@ -155,8 +163,8 @@ export default function App() {
     if(useInventory) {
       removeFromInventory(item.recipes[recipeIndex].materials);
     }
-
     forceUpdate();
+    toastAlert("Project started and ingredients allocated.")
   }
 
   function removeFromProjects(item: CraftingItem, refund=false, recipeId=0) {
@@ -198,8 +206,9 @@ export default function App() {
     setLoading(true);
   }
 
-
   return (
+      <div>
+        <ToastContainer />
     <Dashboard inventory={{addToInventory: addToInventory, removeFromInventory: removeFromInventory}}
                inventoryData={inventoryData}
                craftable={craftable}
@@ -208,5 +217,7 @@ export default function App() {
                projects={{addToWishlist: addToWishlist,
                  addToProjects: addToProjects, removeFromProjects: removeFromProjects, removeFromWishlist: removeFromWishlist}}
               forceUpdate={forceUpdate}/>
+
+    </div>
   );
 }

@@ -364,7 +364,7 @@ export default function EnhancedTable({inventory, forceUpdate, inventoryData} : 
                         />
                         <TableBody
                         >
-                            <TableRow sx={{height: totalHeight}} />
+                            <TableRow sx={{height: totalHeight}}/>
                             {sortedRows.map((row, index) => {
                                 const id = row.name.replace(" ", "-") + index;
                                 return(

@@ -38,7 +38,7 @@ export default function UserGuide() {
 
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
-            <Button onClick={handleOpen}><Typography variant="h5"> User Guide</Typography></Button>
+            <Button variant="outlined" onClick={handleOpen}><Typography variant="h5"> User Guide</Typography></Button>
             <Modal
                 open={open}
                 onClose={handleClose}
