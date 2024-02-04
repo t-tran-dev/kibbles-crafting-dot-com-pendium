@@ -231,6 +231,7 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
     const [usedFor, setUsedFor] = useState("all")
     const [totalHeight, setTotalHeight] = useState(0)
     const [bufferedItems, setBufferedItems] = useState(15)
+    const [bottomHeight, setBottomHeight] = useState(rowHeight* (originalRows.length-bufferedItems))
 
 
     useEffect(() => {
@@ -296,6 +297,10 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
             filteredRows.length - 1
         );
         setTotalHeight(startIndex*rowHeight)
+
+        const botHeight = rowHeight * (filteredRows.length-1-endIndex)
+        setBottomHeight(botHeight)
+
 
          return stableSort(filteredRows, getComparator(order, orderBy)).slice(startIndex, endIndex + 1);
 
@@ -413,7 +418,7 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
                                     <CraftingItemRow key={id} row={row} index={index} inventory={inventory} inventoryData={inventoryData} craftable={craftable} projects={projects} viewState={viewState} forceUpdate={forceUpdate}/>
                                 );
                             })}
-                            <TableRow sx={{height: 100}} />
+                            <TableRow sx={{height: bottomHeight}} />
                         </TableBody>
                     </Table>
                 </TableContainer>

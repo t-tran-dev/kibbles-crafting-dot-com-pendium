@@ -225,6 +225,7 @@ export default function EnhancedTable({inventory, forceUpdate, inventoryData} : 
     const [totalHeight, setTotalHeight] = useState(0)
     const [bufferedItems, setBufferedItems] = useState(15)
     const [containerHeight, setHeight] = useState(440);
+    const [bottomHeight, setBottomHeight] = useState(rowHeight* (originalRows.length-bufferedItems))
 
     useEffect(() => {
         const height = container? container.current? container.current['offsetHeight']: 0: 0;
@@ -270,6 +271,9 @@ export default function EnhancedTable({inventory, forceUpdate, inventoryData} : 
             filteredRows.length - 1
         );
         setTotalHeight(startIndex*rowHeight)
+
+        const botHeight = rowHeight * (filteredRows.length-1-endIndex)
+        setBottomHeight(botHeight)
 
         return stableSort(filteredRows, getComparator(order, orderBy)).slice(startIndex, endIndex + 1);
 
@@ -367,7 +371,7 @@ export default function EnhancedTable({inventory, forceUpdate, inventoryData} : 
                                     <InventoryRow key={id} inventory={inventory} row={row} inventoryData={inventoryData}/>
                                 );
                             })}
-                            <TableRow sx={{height: 100}} />
+                            <TableRow sx={{height: bottomHeight}} />
                         </TableBody>
                     </Table>
                 </TableContainer>
