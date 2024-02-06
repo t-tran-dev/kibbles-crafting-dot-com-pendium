@@ -86,7 +86,7 @@ export default function App() {
   }
 
 
-  function addToInventory(items: InventoryItem[], removeProject=false) {
+  function addToInventory(items: InventoryItem[], removeProject=false, increment = false) {
     if (!!items && items.length>0) {
       let newInventory = new Map(inventoryData);
       items.forEach( (item) => {
@@ -107,7 +107,7 @@ export default function App() {
       if (removeProject) {
         removeFromProjects(itemData.itemList[items[0].id])
         toastAlert("Project completed and added to inventory.")
-      } else {
+      } else if (!increment) {
         toastAlert("Added to inventory")
       }
     }

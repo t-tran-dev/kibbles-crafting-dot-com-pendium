@@ -21,7 +21,7 @@ export default function InventoryRow({row, inventory, inventoryData}: {row: any,
     function increaseItemQuantity(event: any) {
         let value = event.target.value;
         if (value) {
-            inventory.addToInventory([{id: Number(value), quantity: 1}]);
+            inventory.addToInventory([{id: Number(value), quantity: 1}], false, true);
         } else {
             alert("This is coded poorly, wait a bit before clicking please.")
         }

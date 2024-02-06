@@ -47,9 +47,6 @@ export async function importItemData() {
             .then((res) => res.data)
             .then((data: CraftingItem[]) => {
                 itemData.itemList = data;
-                for(let i = 0; i < data.length; i++) {
-                    itemData.itemList[i].id = i;
-                }
                 let garbo: CraftingItem[] =[];//= genGarbo();
                 return garbo;
             }).then((garbo) => {
