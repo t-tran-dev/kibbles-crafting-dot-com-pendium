@@ -11,6 +11,10 @@ import RecipeItemRow from "../tables/RecipeItemRow";
 import TableRow from "@mui/material/TableRow";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
+import {itemData} from "../../data/DataLoader";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import {formatPrice} from "../tables/InventoryRow";
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -31,6 +35,7 @@ export default function RecipeModal({recipes, parentId, inventory, inventoryData
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const item = itemData.itemList[parentId];
 
 
     return (
@@ -46,20 +51,39 @@ export default function RecipeModal({recipes, parentId, inventory, inventoryData
                     <div style={{display: 'flex', justifyContent: 'right'}}>
                         <Button onClick={handleClose}><CloseIcon/></Button>
                     </div>
+                    <Typography variant='h5'>
+                        {item.name}
+                    </Typography>
+                    <Typography variant='body1' sx={{ fontStyle: 'italic' }}>
+                        {item.rarity}
+                        <span style={item.rarity && (item.priceCp || item.usedFor)? {}: { display: 'none' }}>
+                            ,&nbsp;
+                        </span>
+                        {formatPrice(item.priceCp)}
+                        <span style={item.priceCp && item.usedFor? {}: { display: 'none' }}>
+                            ,&nbsp;
+                        </span>{item.usedFor}
+                    </Typography>
+
                     <Table>
                         <TableBody>
                         <TableRow>
-                            <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-                                <Collapse in={open} timeout="auto" unmountOnExit>
-                                    <Box sx={{ margin: 1 }}>
-                                        {recipes.map((recipe: RecipeItem, i: number) => {
-                                            const id = parentId
-                                            return(<RecipeItemRow key={"recipe-"+index+"-"+i}  recipe={{recipe}} parentId={id} inventory = {inventory} inventoryData={inventoryData} craftable={craftable} projects={projects} viewState={viewState} forceUpdate={forceUpdate}/>);
-                                        } )}
-                                    </Box>
-                                </Collapse>
-                            </TableCell>
-                        </TableRow>
+                                <TableCell style={{paddingBottom: 0, paddingTop: 0}} colSpan={6}>
+                                    <Collapse in={open} timeout="auto" unmountOnExit>
+                                        <Box sx={{margin: 1}}>
+                                            {recipes.map((recipe: RecipeItem, i: number) => {
+                                                const id = parentId
+                                                return (
+                                                    <RecipeItemRow key={"recipe-" + index + "-" + i} recipe={{recipe}}
+                                                                   parentId={id} inventory={inventory}
+                                                                   inventoryData={inventoryData} craftable={craftable}
+                                                                   projects={projects} viewState={viewState}
+                                                                   forceUpdate={forceUpdate}/>);
+                                            })}
+                                        </Box>
+                                    </Collapse>
+                                </TableCell>
+                            </TableRow>
                         </TableBody>
                     </Table>
                 </Box>

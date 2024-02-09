@@ -10,6 +10,7 @@ import TableBody from "@mui/material/TableBody";
 import {InventoryItem} from "../../data/data-classes/InventoryItem";
 import {RecipeItem} from "../../data/data-classes/CraftingItem";
 import {itemData} from "../../data/DataLoader";
+import Divider from "@mui/material/Divider";
 
 
 export default function RecipeItemRow({recipe, parentId, inventory, inventoryData, craftable, projects, viewState, forceUpdate} : {recipe: any, parentId:any, inventory: any, inventoryData: any, craftable: any, projects : any, viewState: any, forceUpdate: any}) {
@@ -89,9 +90,10 @@ export default function RecipeItemRow({recipe, parentId, inventory, inventoryDat
 
     return(
         <React.Fragment>
+            <Divider />
             <Grid container spacing={3}>
                 <Grid item sm={4}>
-                    <Typography>
+                    <Typography variant="h6">
                         {recipeItem.school}
                     </Typography>
                 </Grid>
@@ -110,10 +112,16 @@ export default function RecipeItemRow({recipe, parentId, inventory, inventoryDat
                             style={!isProjects ? { display: 'none' } : {}}>Delete Project</Button>
                 </Grid>
             </Grid>
+            <Typography variant="body1" sx={{fontStyle: 'italic'}}>
+                <span style={recipeItem.notes ? {} : {display: 'none'}}>
+                    Recipe Notes:&nbsp;
+                </span>
+                {recipeItem.notes}
+            </Typography>
             <Grid container spacing={2}>
                 <Grid item sm={6}>
                     <Table size="small" aria-label="recipe">
-                        <TableHead>
+                    <TableHead>
                             <TableRow>
                                 <TableCell align="right">Time</TableCell>
                                 <TableCell align="right">Checks</TableCell>

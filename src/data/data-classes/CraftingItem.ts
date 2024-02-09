@@ -5,6 +5,7 @@ export interface RecipeItem {
     school: string;
     checks: number;
     dc: number;
+    notes: string;
     materials: InventoryItem[];
 }
 

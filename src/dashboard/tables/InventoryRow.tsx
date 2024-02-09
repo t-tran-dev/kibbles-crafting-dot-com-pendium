@@ -6,7 +6,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import {Button} from "@mui/material";
 
-function formatPrice(priceCp: number): String {
+export function formatPrice(priceCp: number): String {
 
     if(priceCp < 10) {
         return  priceCp.toString() + " cp";
