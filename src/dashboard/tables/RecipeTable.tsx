@@ -127,8 +127,9 @@ function EnhancedTableHead(props: EnhancedTableProps) {
     return (
         <TableHead>
             <TableRow>
-                <TableCell />
+                <TableCell style={{width: '10%',minWidth: 70}}/>
                 <TableCell
+                    style={{width: '30%'}}
                     key='name'
                     align='left'
                     padding='normal'
@@ -148,6 +149,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
                     </TableSortLabel>
                 </TableCell>
                 <TableCell
+                    style={{width: '10%'}}
                     key='rarity'
                     align='left'
                     padding='normal'
@@ -167,13 +169,15 @@ function EnhancedTableHead(props: EnhancedTableProps) {
                     </TableSortLabel>
                 </TableCell>
                 <TableCell
+                    style={{width: '25%'}}
                     key='usedFor'
-                    align='right'
+                    align='left'
                     padding='normal'
                 >
                         Used For
                 </TableCell>
                 <TableCell
+                    style={{width: '10%',minWidth: 160}}
                     key='priceCp'
                     align='right'
                     padding='normal'
@@ -193,6 +197,8 @@ function EnhancedTableHead(props: EnhancedTableProps) {
                     </TableSortLabel>
                 </TableCell>
                 <TableCell
+                    style={{width: '15%',
+                        minWidth: 140}}
                     key='addToInventory'
                     align='right'
                     padding='normal'

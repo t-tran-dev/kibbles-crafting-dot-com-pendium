@@ -85,7 +85,11 @@ export default function CraftingItemRow({row, index, inventory, inventoryData, c
                                         {row.name}
                                 </TableCell>
                                 <TableCell align="left">{row.rarity}</TableCell>
-                                <TableCell align="right">{row.usedFor}</TableCell>
+                                <TableCell align="left">
+                                    <div style={{overflow: 'hidden',
+                                        textOverflow: "ellipsis"}}>
+                                        {row.usedFor}
+                                    </div></TableCell>
                                 <TableCell align="right">{formatPrice(row.priceCp)}</TableCell>
                                 <TableCell align="right" >
                                     <Button value={row.id} onClick={addToInventory}
