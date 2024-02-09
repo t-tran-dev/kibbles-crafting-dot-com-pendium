@@ -54,20 +54,22 @@ export default function RecipeModal({recipes, parentId, inventory, inventoryData
                     <Typography variant='h5'>
                         {item.name}
                     </Typography>
-                    <Typography variant='body1' sx={{ fontStyle: 'italic' }}>
+                    <Typography variant='body1' sx={{fontStyle: 'italic'}}>
                         {item.rarity}
-                        <span style={item.rarity && (item.priceCp || item.usedFor)? {}: { display: 'none' }}>
+                        <span style={item.rarity && (item.priceCp || item.usedFor) ? {} : {display: 'none'}}>
                             ,&nbsp;
                         </span>
-                        {formatPrice(item.priceCp)}
-                        <span style={item.priceCp && item.usedFor? {}: { display: 'none' }}>
+                        <span style={item.priceCp ? {} : {display: 'none'}}>
+                            {formatPrice(item.priceCp)}
+                        </span>
+                        <span style={item.priceCp && item.usedFor ? {} : {display: 'none'}}>
                             ,&nbsp;
                         </span>{item.usedFor}
                     </Typography>
 
                     <Table>
                         <TableBody>
-                        <TableRow>
+                            <TableRow>
                                 <TableCell style={{paddingBottom: 0, paddingTop: 0}} colSpan={6}>
                                     <Collapse in={open} timeout="auto" unmountOnExit>
                                         <Box sx={{margin: 1}}>
