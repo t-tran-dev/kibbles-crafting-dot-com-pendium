@@ -18,4 +18,5 @@ export interface CraftingItem {
     recipes: RecipeItem[];
     school: string;
     type: string;
+    source: string;
 }

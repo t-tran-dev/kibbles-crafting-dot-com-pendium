@@ -29,6 +29,7 @@ interface ItemData {
     usedFor: string;
     priceCp: number;
     quantity: number;
+    source: string;
 }
 
 function createData(item: InventoryItem): ItemData {
@@ -41,6 +42,7 @@ function createData(item: InventoryItem): ItemData {
     const rarity = recipeItem.rarity
     const usedFor = recipeItem.usedFor;
     const priceCp = recipeItem.priceCp;
+    const source = recipeItem.source;
 
 
     return({
@@ -49,7 +51,8 @@ function createData(item: InventoryItem): ItemData {
         rarity,
         usedFor,
         priceCp,
-        quantity
+        quantity,
+        source
     });
 }
 

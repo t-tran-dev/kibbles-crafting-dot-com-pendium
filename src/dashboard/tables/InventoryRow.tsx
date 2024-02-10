@@ -58,7 +58,7 @@ export default function InventoryRow({row, inventory, inventoryData}: {row: any,
                     scope="row"
                     padding="none"
                 >
-                    {row.name}
+                    {row.name}<sup>{row.source}</sup>
                 </TableCell>
                 <TableCell align="left">{row.rarity}</TableCell>
                 <TableCell align="right">{row.usedFor}</TableCell>

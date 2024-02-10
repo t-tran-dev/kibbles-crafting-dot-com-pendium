@@ -29,6 +29,7 @@ interface ItemData {
     usedFor: string;
     school: string;
     type: string;
+    source: string;
 }
 function createItemData(
     id: number,
@@ -37,7 +38,8 @@ function createItemData(
     priceCp: number,
     usedFor: string,
     school: string,
-    type: string
+    type: string,
+    source: string
 ): ItemData {
     return {
         id,
@@ -46,13 +48,14 @@ function createItemData(
         priceCp,
         usedFor,
         school,
-        type
+        type,
+        source
     };
 }
 
 function setRows(itemData: CraftingItem[]): ItemData[] {
     return itemData.map(item => {
-        return createItemData(item.id, item.name, item.rarity, item.priceCp, item.usedFor, item.school, item.type)
+        return createItemData(item.id, item.name, item.rarity, item.priceCp, item.usedFor, item.school, item.type, item.source)
     })
 }
 

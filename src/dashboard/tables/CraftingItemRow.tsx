@@ -75,16 +75,16 @@ export default function CraftingItemRow({row, index, inventory, inventoryData, c
                                     <RecipeModal recipes={recipes} parentId={row.id} inventory={inventory} inventoryData={inventoryData} craftable={craftable} projects={projects} viewState={viewState} forceUpdate={forceUpdate} index={index}
                                                  />
                                 </TableCell>
-                                <TableCell
+                            <TableCell
                                 component="th"
                                 id={labelId}
                                 scope="row"
                                 padding="none"
-                                style={!isProjects && craftable.get(row.id) ? { color: 'green', fontWeight: 'bold'} : {}}
-                                >
-                                        {row.name}
-                                </TableCell>
-                                <TableCell align="left">{row.rarity}</TableCell>
+                                style={!isProjects && craftable.get(row.id) ? {color: 'green', fontWeight: 'bold'} : {}}
+                            >
+                                {row.name}<sup>{row.source}</sup>
+                            </TableCell>
+                            <TableCell align="left">{row.rarity}</TableCell>
                                 <TableCell align="left">
                                     <div style={{overflow: 'hidden',
                                         textOverflow: "ellipsis"}}>

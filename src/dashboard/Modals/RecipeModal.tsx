@@ -52,7 +52,7 @@ export default function RecipeModal({recipes, parentId, inventory, inventoryData
                         <Button onClick={handleClose}><CloseIcon/></Button>
                     </div>
                     <Typography variant='h5'>
-                        {item.name}
+                        {item.name}<sup>{item.source}</sup>
                     </Typography>
                     <Typography variant='body1' sx={{fontStyle: 'italic'}}>
                         {item.rarity}
