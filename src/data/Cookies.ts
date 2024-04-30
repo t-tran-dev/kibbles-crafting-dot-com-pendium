@@ -22,11 +22,16 @@ export function parseInventory(invData: number[][]): Map<string, InventoryItem> 
     let inventory = new Map<string, InventoryItem>()
 
     if (invData) {
-        invData.forEach((inv) => {
-            let item = itemData.itemList[inv[0]];
+        try {
+            invData.forEach((inv) => {
+                let item = itemData.itemList[inv[0]];
 
-            inventory.set(item.name.toLowerCase(), {name: item.name, id: item.id, quantity: inv[1]})
-        })
+                inventory.set(item.name.toLowerCase(), {name: item.name, id: item.id, quantity: inv[1]})
+            })
+        } catch (e) {
+            console.log("Error with inventory data: " + invData)
+        }
+
     }
 
     return inventory;
@@ -48,11 +53,15 @@ export function parseProjWishList(data: number[]): CraftingItem[] {
     let craftingList: CraftingItem[] = [];
 
     if(data) {
-        data.forEach((da) => {
-            let item = itemData.itemList[da];
+        try {
+            data.forEach((da) => {
+                let item = itemData.itemList[da];
 
-            craftingList.push(item);
-        });
+                craftingList.push(item);
+            });
+        } catch (e) {
+            console.log("Error with wishlist or active project data: " + data)
+        }
     }
     return craftingList;
 }
