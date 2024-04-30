@@ -131,7 +131,7 @@ export default function RecipeItemRow({recipe, parentId, inventory, inventoryDat
                         </TableHead>
                         <TableBody>
                             <TableRow>
-                                <TableCell align="right">{recipeItem.checks * 4} Hours</TableCell>
+                                <TableCell align="right">{recipeItem.checks * 2} Hours</TableCell>
                                 <TableCell align="right">{recipeItem.checks}</TableCell>
                                 <TableCell align="right">{recipeItem.dc}</TableCell>
                             </TableRow>

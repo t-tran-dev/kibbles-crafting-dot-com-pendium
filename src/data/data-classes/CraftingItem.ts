@@ -1,7 +1,7 @@
 import {InventoryItem} from "./InventoryItem";
 
 export interface RecipeItem {
-    id: number
+    id: number;
     school: string;
     checks: number;
     dc: number;

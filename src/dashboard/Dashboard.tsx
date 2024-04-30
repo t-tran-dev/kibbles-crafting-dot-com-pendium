@@ -25,6 +25,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import UserGuide from "./Modals/UserGuide";
+import ExportModal from "./Modals/ExportModal";
 
 function Copyright(props: any) {
   return (
@@ -46,6 +47,15 @@ function Readme({viewState}: {viewState: any}) {
 
     return (
         <UserGuide/>
+
+    )
+
+}
+
+function Export({viewState}: {viewState: any}) {
+
+    return (
+        <ExportModal/>
 
     )
 
@@ -200,6 +210,7 @@ export default function Dashboard({inventory, inventoryData, craftable, projects
             </Grid>
           </Container>
             <Readme viewState={viewState}/>
+            <Export viewState={viewState}/>
             <Copyright sx={{ pt: 4 }} />
         </Box>
       </Box>

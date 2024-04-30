@@ -3,6 +3,7 @@ import { CookiesProvider } from 'react-cookie';
 import {InventoryItem } from './data-classes/InventoryItem'
 import {CraftingItem} from "./data-classes/CraftingItem";
 import {itemData} from "./DataLoader";
+import {ImportExportData} from "./data-classes/ImportExportData";
 
 export function cookifyInventory(inventory: Map<string, InventoryItem>): number[][] {
     let invData: number[][] = [];
@@ -54,5 +55,20 @@ export function parseProjWishList(data: number[]): CraftingItem[] {
         });
     }
     return craftingList;
+}
+
+export function exportCraftingData(wishlist: number[], active: number[], inventory: number[][]): string {
+    const exportData: ImportExportData = {
+        inventory: inventory,
+        wishlist: wishlist,
+        active: active,
+    };
+
+    return JSON.stringify(exportData)
+
+}
+
+export function importCraftingData(data: string): ImportExportData {
+    return JSON.parse(data)
 }
 
