@@ -234,6 +234,7 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
     const [order, setOrder] = React.useState<Order>('asc');
     const [orderBy, setOrderBy] = React.useState<keyof ItemData>('priceCp');
     const [craftableOnly, setCraftableOnly] = React.useState(false);
+    const [recipeOnly, setRecipeOnly] = React.useState(false);
     const [search, setSearch] = useState("")
     const [rarity, setRarity] = useState("all")
     const [school, setSchool] = useState("all")
@@ -256,6 +257,7 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
     if (viewState == "projects"&& originalRows.length != projectData.length) {
         setOriginalRows(setRows(projectData));
         setCraftableOnly(false);
+        setRecipeOnly(false);
     }
     if(viewState == "items"  && originalRows.length != itemData.itemList.length) {
         setOriginalRows(setRows(itemData.itemList));
@@ -277,7 +279,8 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
                     && (school == "all" || row.school.toLowerCase().includes(school.toLowerCase()))
                     && (rarity == "all" || row.rarity.toLowerCase() == rarity.toLowerCase())
                     && (usedFor == "all" || row.usedFor.toLowerCase().includes(usedFor.toLowerCase()))
-                    && (!craftableOnly || craftable.get(row.id))) {
+                    && (!craftableOnly || craftable.get(row.id))
+                    && (!recipeOnly || row.school)) {
                     return row;
                 }
             }
@@ -287,6 +290,9 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
 
     const handleChangeCraftable = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCraftableOnly(event.target.checked);
+    };
+    const handleChangeRecipe = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRecipeOnly(event.target.checked);
     };
 
     // get the children to be renderd
@@ -313,7 +319,7 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
     }, [
         rowHeight,
         scrollPosition,
-        order, orderBy, search, rarity, usedFor, school, craftableOnly, originalRows, forceUpdate
+        order, orderBy, search, rarity, usedFor, school, craftableOnly, originalRows, forceUpdate, recipeOnly
     ]);
 
     const onScroll = React.useMemo(
@@ -430,12 +436,16 @@ export default function EnhancedTable({inventory, inventoryData, craftable, proj
                 </TableContainer>
             </Paper>
             <div style={viewState == "projects" ? { display: 'none' } : {}}>
-                <FormControlLabel
+                <FormControlLabel style={{color: 'green'}}
                     control={<Switch checked={craftableOnly} onChange={handleChangeCraftable} />}
                     label="Only show craftable"
                 />
+                <FormControlLabel
+                    control={<Switch checked={recipeOnly} onChange={handleChangeRecipe} />}
+                    label="Only show items with recipes"
+                />
                 <Typography style={{color: 'green', fontWeight: 'bold'}}>
-                    * Green shows items you have the ingredients to craft. Toggle shows just these.
+                    * Green shows items you have the ingredients to craft.
                 </Typography>
             </div>
         </Box>
