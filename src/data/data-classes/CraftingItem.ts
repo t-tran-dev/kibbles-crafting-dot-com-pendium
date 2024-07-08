@@ -7,6 +7,7 @@ export interface RecipeItem {
     dc: number;
     notes: string;
     materials: InventoryItem[];
+    modifiable: string;
 }
 
 export interface CraftingItem {
