@@ -1,6 +1,6 @@
 import React from "react";
 import { Copyright } from "./copyright";
-import { ExportModal, UserGuide } from "../Modals";
+import { ExportModal, UserGuide } from "../modals";
 
 export const BottomBar = () => {
   return (

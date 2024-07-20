@@ -6,8 +6,8 @@ import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Grid";
 import CloseIcon from "@mui/icons-material/Close";
 import { useCookies } from "react-cookie";
-import { exportCraftingData, importCraftingData } from "../../data/Cookies";
-import { ImportExportData } from "../../data/data-classes/ImportExportData";
+import { exportCraftingData, importCraftingData } from "../../api/Cookies";
+import { ImportExportData } from "../../api/types/importExportData";
 
 const style = {
   position: "absolute" as "absolute",

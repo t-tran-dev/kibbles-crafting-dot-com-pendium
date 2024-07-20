@@ -1,16 +1,14 @@
 import * as React from "react";
-
-import { InventoryItem } from "./data/data-classes/InventoryItem";
 import { useEffect } from "react";
-import { importItemData, itemData } from "./data/DataLoader";
-import { CraftingItem, RecipeItem } from "./data/data-classes/CraftingItem";
-import { CookiesProvider, useCookies } from "react-cookie";
+import { itemData } from "./api";
+import { CraftingItem, InventoryItem, RecipeItem } from "./api/types/items";
+import { useCookies } from "react-cookie";
 import {
   cookifyInventory,
   cookifyProjWishlist,
   parseInventory,
   parseProjWishList,
-} from "./data/Cookies";
+} from "./api/Cookies";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import Dashboard from "./views/dashboard/Dashboard";
@@ -34,6 +32,7 @@ export default function App() {
     () => updateState(val + 1),
     [inventoryData]
   );
+  console.log("itemData", itemData);
 
   function toastAlert(message: string) {
     toast(message);
@@ -205,15 +204,14 @@ export default function App() {
     forceUpdate();
   }
 
-  async function loadData() {
-    await importItemData().then(() => {
-      setInventoryData(parseInventory(cookies.inv));
-      setWishlistData(parseProjWishList(cookies.wish));
-      setProjectData(parseProjWishList(cookies.proj));
+  function loadData() {
+    setInventoryData(parseInventory(cookies.inv));
+    setWishlistData(parseProjWishList(cookies.wish));
+    setProjectData(parseProjWishList(cookies.proj));
 
-      setLoading(false);
-    });
+    setLoading(false);
   }
+
   useEffect(() => {
     if (loading) loadData();
     setCraftable(initializeCraftableValues());

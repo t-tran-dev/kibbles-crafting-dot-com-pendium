@@ -1,3 +1,3 @@
-export * from "./ExportModal";
-export * from "./RecipeModal";
-export * from "./UserGuide";
+export * from "./exportModal";
+export * from "./recipeModal";
+export * from "./userGuide";

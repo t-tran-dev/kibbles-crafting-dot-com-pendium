@@ -4,7 +4,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import { InventoryTable, RecipeTable } from "../../components/tables";
+// import { InventoryTable, RecipeTable } from "../../components/tables";
+
 import { ContentLayout } from "../root/ContentLayout";
 
 function HandleState({
@@ -28,25 +29,27 @@ function HandleState({
 }) {
   if (viewState != "inventory") {
     return (
-      <RecipeTable
-        inventory={inventory}
-        inventoryData={inventoryData}
-        craftable={craftable}
-        projects={projects}
-        viewState={viewState}
-        wishlistData={wishlistData}
-        projectData={projectData}
-        forceUpdate={forceUpdate}
-      />
+      // <RecipeTable
+      //   inventory={inventory}
+      //   inventoryData={inventoryData}
+      //   craftable={craftable}
+      //   projects={projects}
+      //   viewState={viewState}
+      //   wishlistData={wishlistData}
+      //   projectData={projectData}
+      //   forceUpdate={forceUpdate}
+      // />
+      <div>Recipe Table</div>
     );
   }
 
   return (
-    <InventoryTable
-      inventory={inventory}
-      inventoryData={inventoryData}
-      forceUpdate={forceUpdate}
-    />
+    // <InventoryTable
+    //   inventory={inventory}
+    //   inventoryData={inventoryData}
+    //   forceUpdate={forceUpdate}
+    // />
+    <div>Inventory Table</div>
   );
 }
 

@@ -4,8 +4,8 @@ import TableCell from "@mui/material/TableCell";
 import { Button } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import CloseIcon from "@mui/icons-material/Close";
-import { itemData } from "../../data/DataLoader";
-import { RecipeModal } from "../Modals";
+import { itemData } from "../../api";
+import { RecipeModal } from "../modals";
 
 export const CraftingItemRow = ({
   row,
@@ -26,7 +26,6 @@ export const CraftingItemRow = ({
   viewState: any;
   forceUpdate: any;
 }) => {
-  const [open, setOpen] = React.useState(false);
   const labelId = `enhanced-table-checkbox-${index}`;
 
   function addToInventory(event: any) {

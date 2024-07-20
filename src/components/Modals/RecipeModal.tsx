@@ -6,11 +6,11 @@ import Modal from "@mui/material/Modal";
 import CloseIcon from "@mui/icons-material/Close";
 import TableCell from "@mui/material/TableCell";
 import { Collapse } from "@mui/material";
-import { RecipeItem } from "../../data/data-classes/CraftingItem";
+import { RecipeItem } from "../../api/types/items";
 import TableRow from "@mui/material/TableRow";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import { itemData } from "../../data/DataLoader";
+import { itemData } from "../../api";
 import Typography from "@mui/material/Typography";
 import { formatPrice } from "../tables/InventoryRow";
 import { RecipeItemRow } from "../tables";
@@ -92,7 +92,7 @@ export const RecipeModal = ({
               ,&nbsp;
             </span>
             <span style={item.priceCp ? {} : { display: "none" }}>
-              {formatPrice(item.priceCp)}
+              {item.priceCp ? formatPrice(item.priceCp) : 0}
             </span>
             <span
               style={item.priceCp && item.usedFor ? {} : { display: "none" }}

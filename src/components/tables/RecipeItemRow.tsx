@@ -7,9 +7,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
-import { InventoryItem } from "../../data/data-classes/InventoryItem";
-import { RecipeItem } from "../../data/data-classes/CraftingItem";
-import { itemData } from "../../data/DataLoader";
+import { InventoryItem } from "../../api";
+import { RecipeItem } from "../../api/";
+import { itemData } from "../../api";
 import Divider from "@mui/material/Divider";
 
 export const RecipeItemRow = ({
